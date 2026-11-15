@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 // No chunkSizeWarningLimit override: real bundle warnings stay visible.
 // Three.js core and its addons get their own cacheable chunks; the title screen loads neither.
 export default defineConfig({
+  base: '/SOl60/',
   plugins: [react(), tailwindcss()],
   server: { port: 5173, strictPort: false },
   build: {
