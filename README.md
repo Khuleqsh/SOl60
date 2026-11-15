@@ -1,5 +1,7 @@
 # SOL 60: RED HORIZON — *Echoes of Ares-7*
 
+**[▶ Play Live in Browser](https://khuleqsh.github.io/SOl60/)** — Zero install required (Chrome, Edge, Firefox, or Safari with WebGL).
+
 A 3D Mars survival, science and mountain-ascent game for the **2026 NASA Space Apps Challenge**.
 React 19 · Three.js r172 · Vite 8 · Tailwind 4 · Web Audio · Vitest. Everything is procedural: no external models,
 textures or sound files.
@@ -8,7 +10,7 @@ textures or sound files.
 
 ## ▶ 60-Second Judge Path
 
-1. `npm install` then `npm run dev` and open the printed URL (Chrome, Edge, Firefox or Safari with WebGL).
+1. Launch the live build at **[https://khuleqsh.github.io/SOl60/](https://khuleqsh.github.io/SOl60/)** directly in your browser (or run locally with `npm install` then `npm run dev` in Chrome, Edge, Firefox, or Safari with WebGL).
 2. On the title screen click the big **▶ 60-Second Judge Path (Quick-Tour)** button. No setup, no loadout.
 3. Sit back for about a minute. The autopilot shows:
    - the Ares-7 descent into Gale Crater, with the **scale disclosure** in the subtitles;
@@ -35,6 +37,8 @@ it on the title screen.
 
 ## Setup
 
+No local setup is needed to play—open **[https://khuleqsh.github.io/SOl60/](https://khuleqsh.github.io/SOl60/)** directly in any WebGL-capable browser. To run the dev server or test suite locally:
+
 ```bash
 npm install
 npm run dev      # development server
@@ -43,7 +47,7 @@ npm run build    # production build (code-split; no chunk-size warnings suppress
 npm run preview  # serve the production build
 ```
 
-Requires Node 20+ and a WebGL-capable browser. The title screen detects WebGL first and explains what to do if
+Local builds require Node 20+ and a WebGL-capable browser. The title screen detects WebGL first and explains what to do if
 it is missing. A crashing 3D stage shows a readable error with a way back, never a black screen.
 
 ## Controls
@@ -130,35 +134,4 @@ Each Codex entry, puzzle, debrief metric and data-overlay row links to its sourc
 | MRO CRISM / Perseverance SHERLOC | mineral absorption bands in the spectroscopy puzzle | [MRO](https://science.nasa.gov/mission/mars-reconnaissance-orbiter/) |
 | Feature coordinates | Gale ↔ Olympus great-circle distance | [USGS Gazetteer](https://planetarynames.wr.usgs.gov/) |
 
-Full list: `src/data/nasaDatasets.js` (`SOURCES`) and the in-game Debrief citations (copyable).
-Honesty notes: the MOLA "profiles" are schematic transects anchored to rounded, published elevations, not resampled
-MEGDR data. Weather values are a game model tuned to sit inside the published ranges. Rover energy rates are
-compressed for play, but their relative costs follow real rover power budgets.
-
-## Accessibility
-
-- **Deaf / hard-of-hearing:** the pioneer beacons are never audio-only. A visual HUD shows a bearing arc and a waveform that pulses with every dit and dah, and the caption reads the callsign as it is keyed (`OP[P] .--`). Radio lines are on-screen subtitles (`aria-live`).
-- **Reduced motion:** follows `prefers-reduced-motion` and has an in-game toggle. Camera shake from storms, quakes and the descent is damped to 12%, and CSS animations stop.
-- **Controls:** no middle mouse button is needed; zoom works from the keyboard; touch controls are available; all puzzles work with pointer, touch or keyboard.
-- **ARIA:** dialogs, `role="meter"` vitals, `role="alert"` hazards and labelled buttons.
-
-## Tests
-
-`npm test` runs 29 Vitest tests:
-- **Data integrity:** every source, Codex link and citation is a well-formed HTTPS URL, and the scale facts are honest.
-- **Olympus Mons and collision:**
-  - the trail is walkable and physics heights match the mesh exactly;
-  - you can't walk up a cliff, but you can climb one without clipping;
-  - fast movement can't tunnel through rocks.
-- **Game systems:** climbing (grip and pitons), the bunker budget (you can't afford everything, and every item changes gameplay), rover energy, all five puzzles, Morse timing and the quest state machine.
-- **Boot smoke tests:** every game mode builds its simulation, WebGL detection degrades safely, and every UI/stage module imports.
-
-## Known limitations
-
-- Hazard and weather scheduling still lives in `engine/game.js`. It has not yet been moved into `logic/` like the quest, climbing, rover and puzzle rules.
-- The automated tests cover the logic and module boot, not rendered pixels. 3D scenes were checked by hand in the browser.
-- No gamepad support yet.
-
-## License
-
-MIT (see `LICENSE`). NASA data and mission names belong to their owners and are cited above.
+Full list: `src/data/nasaDatasets.js` (`SOURCES`) and the in-game Debrief citations
